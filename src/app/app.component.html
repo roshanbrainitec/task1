@@ -1,0 +1,62 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="example-fill-remaining-space"></span>
+    <span class="example-spacer"></span>
+    <!-- <button mat-button>About</button>
+    <button mat-button>Contact</button> -->
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- <ul>
+  <li class="unknown">Unknown</li>
+</ul> -->
+
+<div class="example-container mat-elevation-z8">
+
+  <!-- <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div> -->
+  <mat-table #table [dataSource]="Data_list" matSort>
+
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef> Age</mat-header-cell>
+      <!-- <mat-cell *matCellDef="let element">
+        {{element.age}} -->
+
+      <mat-cell *matCellDef="let element" [ngClass]="{'positive' : element.age > 18 && !null, 'negative' : element.age <=18,  'maybe' : element.age == null }">
+        {{element.age}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="age">
+      <mat-header-cell *matHeaderCellDef>Age2</mat-header-cell>
+      <mat-cell *matCellDef="let element" [ngClass]="{'positive' : element.age > 18, 'negative' : element.age < 18}"> {{element.age}}</mat-cell>
+    </ng-container> -->
+
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <!-- <button mat-button>Remove</button> -->
+      <mat-cell *matCellDef="let element" ng-hide="!element.length">
+        <button mat-button ng-click="remove()">Remove</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="rowClicked(row)"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="5" [pageSize]="3" [pageSizeOptions]="[5, 10, 25]">
+  </mat-paginator>
+</div>
