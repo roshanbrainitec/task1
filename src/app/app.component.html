@@ -7,30 +7,24 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<!-- <ul>
-  <li class="unknown">Unknown</li>
-</ul> -->
-
 <div class="example-container mat-elevation-z8">
-
   <!-- <div class="example-header">
     <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </mat-form-field>
   </div> -->
   <mat-table #table [dataSource]="Data_list" matSort>
-
-    <ng-container matColumnDef="position">
+    <ng-container matColumnDef="no">
       <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="firstName">
+    <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="lastName">
+    <ng-container matColumnDef="Age">
       <mat-header-cell *matHeaderCellDef> Age</mat-header-cell>
       <!-- <mat-cell *matCellDef="let element">
         {{element.age}} -->
@@ -39,12 +33,6 @@
         {{element.age}}
       </mat-cell>
     </ng-container>
-
-    <!-- <ng-container matColumnDef="age">
-      <mat-header-cell *matHeaderCellDef>Age2</mat-header-cell>
-      <mat-cell *matCellDef="let element" [ngClass]="{'positive' : element.age > 18, 'negative' : element.age < 18}"> {{element.age}}</mat-cell>
-    </ng-container> -->
-
 
     <ng-container matColumnDef="email">
       <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
